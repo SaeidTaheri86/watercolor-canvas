@@ -289,26 +289,26 @@
   }
 
   // ── Highlighter ──────────────────────────────────────────
-  // wider barrel · coloured chisel tip protrudes from TOP
-  function HighlighterSVG({ color, flipChisel = false }) {
-    // chisel tip: a parallelogram angled left-to-right (or mirrored)
-    const tipPath = flipChisel
-      ? "M12 2 L24 6 L24 20 L12 20 Z"   // right side higher → angled ↗
-      : "M10 6 L22 2 L22 20 L10 20 Z";  // left side higher  → angled ↖
+  // wider barrel · flat rectangular felt nib at TOP · two colour bands on body
+  function HighlighterSVG({ color }) {
     return (
-      <svg width="34" height="90" viewBox="0 0 34 90" fill="none">
-        {/* Chisel tip */}
-        <path d={tipPath} fill={color} stroke={color} strokeWidth="0.5" strokeLinejoin="round"/>
-        {/* Collar where tip meets barrel */}
-        <rect x="10" y="19" width="14" height="4" rx="0.5" fill="#e2e2e2" stroke={S} strokeWidth="1"/>
-        {/* Barrel */}
-        <rect x="10" y="23" width="14" height="44" fill="white" stroke={S} strokeWidth="1.2"/>
-        {/* Colour band */}
-        <rect x="10" y="57" width="14" height="7" fill={color}/>
+      <svg width="32" height="90" viewBox="0 0 32 90" fill="none">
+        {/* Flat felt nib — rectangle, same width as barrel, coloured */}
+        <rect x="9" y="2" width="14" height="10" rx="1.5" fill={color}/>
+        {/* Thin nib-to-barrel collar */}
+        <rect x="8" y="11" width="16" height="4" rx="0.5" fill="#e2e2e2" stroke={S} strokeWidth="1"/>
+        {/* Upper barrel */}
+        <rect x="9" y="15" width="14" height="22" fill="white" stroke={S} strokeWidth="1.2"/>
+        {/* Upper colour stripe */}
+        <rect x="9" y="30" width="14" height="6" fill={color}/>
+        {/* Mid barrel */}
+        <rect x="9" y="36" width="14" height="20" fill="white" stroke={S} strokeWidth="1.2"/>
+        {/* Lower colour stripe */}
+        <rect x="9" y="50" width="14" height="5" fill={color}/>
         {/* Lower barrel */}
-        <rect x="10" y="64" width="14" height="14" fill="white" stroke={S} strokeWidth="1.2"/>
+        <rect x="9" y="55" width="14" height="21" fill="white" stroke={S} strokeWidth="1.2"/>
         {/* Base cap */}
-        <rect x="9"  y="78" width="16" height="10" rx="2.5" fill="#e8e8e8" stroke={S} strokeWidth="1"/>
+        <rect x="8" y="76" width="16" height="12" rx="2.5" fill="#e8e8e8" stroke={S} strokeWidth="1"/>
       </svg>
     );
   }
@@ -400,8 +400,8 @@
   const TOOL_SVG = {
     'fineliner-red':     () => <FineLineSVG    color="#e03030"/>,
     'fineliner-yellow':  () => <FineLineSVG    color="#ccaa00"/>,
-    'highlighter-green': () => <HighlighterSVG color="#60d020" flipChisel={false}/>,
-    'highlighter-pink':  () => <HighlighterSVG color="#e020c0" flipChisel={true}/>,
+    'highlighter-green': () => <HighlighterSVG color="#60d020"/>,
+    'highlighter-pink':  () => <HighlighterSVG color="#e020c0"/>,
     'marker-black':      () => <ThickMarkerSVG color="#111111"/>,
     'pencil-purple':     () => <ColorPencilSVG color="#7030d8"/>,
     'eraser':            () => <EraserToolSVG  />,
