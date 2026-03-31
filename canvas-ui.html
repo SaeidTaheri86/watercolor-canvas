@@ -616,29 +616,38 @@
           {/* Thin divider */}
           <div style={{ width:1, height:22, background:'rgba(0,0,0,0.08)', alignSelf:'center', flexShrink:0, margin:'0 8px' }}/>
 
-          {/* CENTER — Tools */}
-          {TOOL_DEFS.map(({ id, label }) => {
-            const isActive = activeToolId === id;
-            return (
-              <button key={id} className="tool-btn" onClick={() => onSelectTool(id)}
-                title={label}
-                style={{
-                  display:'flex',
-                  flexDirection:'column',
-                  alignItems: 'center',
-                  justifyContent:'flex-end',
-                  padding: '0 6px 8px',
-                  paddingTop: isActive ? 24 : 0,
-                  borderRadius: 9999,
-                  background: isActive ? 'rgba(0,0,0,0.06)' : 'transparent',
-                  alignSelf: 'flex-end',
-                  transition:'background 0.15s, padding-top 0.2s cubic-bezier(0.34,1.56,0.64,1)',
-                  flexShrink:0,
-                }}>
-                {TOOL_SVG[id]()}
-              </button>
-            );
-          })}
+          {/* CENTER — Tools (own box, no top/bottom padding, bottoms glued) */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'flex-end',
+            padding: 0,
+            gap: 6,
+            alignSelf: 'flex-end',
+          }}>
+            {TOOL_DEFS.map(({ id, label }) => {
+              const isActive = activeToolId === id;
+              return (
+                <button key={id} className="tool-btn" onClick={() => onSelectTool(id)}
+                  title={label}
+                  style={{
+                    display:'flex',
+                    flexDirection:'column',
+                    alignItems: 'center',
+                    justifyContent:'flex-end',
+                    padding: '0 6px 0',
+                    paddingTop: isActive ? 24 : 0,
+                    borderRadius: 9999,
+                    background: isActive ? 'rgba(0,0,0,0.06)' : 'transparent',
+                    alignSelf: 'flex-end',
+                    transition:'background 0.15s, padding-top 0.2s cubic-bezier(0.34,1.56,0.64,1)',
+                    flexShrink:0,
+                  }}>
+                  {TOOL_SVG[id]()}
+                </button>
+              );
+            })}
+          </div>
 
           {/* Thin divider */}
           <div style={{ width:1, height:22, background:'rgba(0,0,0,0.08)', alignSelf:'center', flexShrink:0, margin:'0 8px' }}/>
